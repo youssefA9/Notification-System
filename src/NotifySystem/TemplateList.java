@@ -12,45 +12,46 @@ public class TemplateList {
 
     TemplateList() {
         File file = new File("backup.txt");
-        try {
-            Scanner sc = new Scanner(file);
-            int counter = 0;
-            int templateIndex = 0;
-            String temp = "";
-            String temp1;
+        if (file.exists()) {
+            try {
+                Scanner sc = new Scanner(file);
+                int counter = 0;
+                int templateIndex = 0;
+                String temp = "";
+                String temp1;
 
 
-            while (sc.hasNextLine()) {
-                counter = 0;
-                templates.add(new Template());
-                temp1 = sc.nextLine();
-                while (!temp1.matches("‽")) {
-                    if (counter == 0) {
-                        templates.get(templateIndex).setSubject(temp1);
-                        temp1 = sc.nextLine();
-                        counter++;
-                    } else if (counter == 1) {
-                        templates.get(templateIndex).setLanguage(temp1);
-                        temp1 = sc.nextLine();
-                        counter++;
-                    } else {
-                        if (counter != 2) {
-                            temp = templates.get(templateIndex).getContent();
-                            temp += "\n";
+                while (sc.hasNextLine()) {
+                    counter = 0;
+                    templates.add(new Template());
+                    temp1 = sc.nextLine();
+                    while (!temp1.matches("‽")) {
+                        if (counter == 0) {
+                            templates.get(templateIndex).setSubject(temp1);
+                            temp1 = sc.nextLine();
+                            counter++;
+                        } else if (counter == 1) {
+                            templates.get(templateIndex).setLanguage(temp1);
+                            temp1 = sc.nextLine();
+                            counter++;
+                        } else {
+                            if (counter != 2) {
+                                temp = templates.get(templateIndex).getContent();
+                                temp += "\n";
+                            }
+                            temp += temp1;
+                            templates.get(templateIndex).setContent(temp);
+                            temp1 = sc.nextLine();
+                            counter++;
                         }
-                        temp += temp1;
-                        templates.get(templateIndex).setContent(temp);
-                        temp1 = sc.nextLine();
-                        counter++;
                     }
+                    temp = "";
+                    templateIndex++;
                 }
-                temp = "";
-                templateIndex++;
-            }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
         /*Template template = new Template();
         Management manager = new Management();
@@ -60,6 +61,7 @@ public class TemplateList {
         String content = "Dear " + place.get(0) + ", \n" + "Thanks for buying our product : " + place.get(1) + ".\n" + "Best regards";
         template = manager.create("Confirmation", content, place);
         templates.add(template);*/
+        }
     }
 
 
