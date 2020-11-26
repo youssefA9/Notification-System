@@ -8,7 +8,7 @@ public class Management {
         Template template = new Template();
         template.setSubject(Subject);
         template.setContent(Content);
-        template.setPlaceholders(Placeholders);
+       // template.setPlaceholders(Placeholders);
         return template;
     }
 
@@ -32,7 +32,7 @@ public class Management {
         for (int i = 0; i < temp.size(); i++) {
             if (temp.get(i).getSubject().equals(Subject)) {
                 temp.get(i).setContent(Content);
-                temp.get(i).setPlaceholders(place);
+               // temp.get(i).setPlaceholders(place);
                 break;
             }
         }

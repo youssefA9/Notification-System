@@ -1,8 +1,7 @@
 package NotifySystem;
 
 public interface channel {
-    String channel = null;
 
-    public void setChannel();
+public void setC(String c1);
 
 }
