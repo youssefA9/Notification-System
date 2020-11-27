@@ -16,16 +16,6 @@ public class Notification {
         return Placeholders;
     }
 
-    /*
-        public Template Search(String sub){
-            for(int i=0;i<t.getTemplates().size();i++){
-                if(t.getTemplates().get(i).getSubject().equals(sub)){
-                    return t.getTemplates().get(i);
-
-                }
-            }
-            return null;
-        }*/
     public void ConstructNotification(Template temp) {
 
         this.subject = temp.getSubject();
