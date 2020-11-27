@@ -3,39 +3,47 @@ package NotifySystem;
 import java.util.ArrayList;
 
 public class Notification {
-    //private ArrayList<Template> t=new ArrayList<Template>();
     TemplateList t;
-    channel c;
-    public  void notify(TemplateList obj){
-for(int i=0;i<obj.getTemplates().size();i++){
+    String subject, language, content;
+    ArrayList<String> Placeholders = new ArrayList<>();
+    Channel c;
 
-    t.getTemplates().add(obj.getTemplates().get(i));
-
-}
-
-
+    public void setPlaceholders(ArrayList<String> placeholders) {
+        Placeholders = placeholders;
     }
-    public Template Search(String sub){
-        for(int i=0;i<t.getTemplates().size();i++){
-        if(t.getTemplates().get(i).getSubject().equals(sub)){
-            return t.getTemplates().get(i);
+
+    public ArrayList<String> getPlaceholders() {
+        return Placeholders;
+    }
+
+    public void notify(TemplateList obj) {
+        for (int i = 0; i < obj.getTemplates().size(); i++) {
+
+            t.getTemplates().add(obj.getTemplates().get(i));
 
         }
+    }
 
+    public Template Search(String sub) {
+        for (int i = 0; i < t.getTemplates().size(); i++) {
+            if (t.getTemplates().get(i).getSubject().equals(sub)) {
+                return t.getTemplates().get(i);
 
+            }
         }
-
         return null;
     }
-public void ShowNotify(){
 
-        for(int i=0;i<t.getTemplates().size();i++){
-            System.out.println(t.getTemplates().get(i));
+    /*  public void ConstructNotification(Template temp){
+         this.subject=temp.getSubject();
+         this.language=temp.getLanguage();
+         String newContent=
+      }
 
+     */
+    public void ShowNotify(Notification obj) {
+        //  System.out.println("Subject is: "+obj.);
 
-        }
-
-
-}
+    }
 
 }

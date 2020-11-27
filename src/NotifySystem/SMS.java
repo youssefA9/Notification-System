@@ -1,9 +1,12 @@
 package NotifySystem;
 
-public class SMS implements channel {
-    String c=null;
-    public   void setC(String c){
-        this.c=c;
+public class SMS implements Channel {
+    String phone;
 
-    };
+
+    @Override
+    public void setMethod(String method) {
+        this.phone=method;
+
+    }
 }

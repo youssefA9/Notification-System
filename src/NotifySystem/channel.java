@@ -1,7 +1,5 @@
 package NotifySystem;
 
-public interface channel {
-
-public void setC(String c1);
-
+public interface Channel {
+    public void setMethod(String method);
 }

@@ -3,12 +3,12 @@ package NotifySystem;
 import java.util.ArrayList;
 
 public class Management {
-
-    public Template create(String Subject, String Content, ArrayList<String> Placeholders) {
+    public Template create(String Subject, String Content, String language) {
         Template template = new Template();
         template.setSubject(Subject);
         template.setContent(Content);
-       // template.setPlaceholders(Placeholders);
+        template.setLanguage(language);
+        // template.setPlaceholders(Placeholders);
         return template;
     }
 
@@ -17,35 +17,47 @@ public class Management {
         return temp;
     }
 
-    public void read(String Subject, ArrayList<Template> temp) {
+    public boolean CheckSubject(String subject, ArrayList<Template> temp) {
         for (int i = 0; i < temp.size(); i++) {
-            if (temp.get(i).getSubject().equals(Subject)) {
-                System.out.println(temp.get(i).getContent());
-                break;
-            }
+            if ((temp.get(i).getSubject().toLowerCase()).equals(subject.toLowerCase()))
+                return false;
         }
-        System.out.println("Can't find this template!");
-
+        return true;
     }
 
-    public void update(String Subject, String Content, ArrayList<String> place, ArrayList<Template> temp) {
+    public void read(String subject, ArrayList<Template> temp) {
+        boolean flag = true;
         for (int i = 0; i < temp.size(); i++) {
-            if (temp.get(i).getSubject().equals(Subject)) {
+            if ((temp.get(i).getSubject().toLowerCase()).equals(subject.toLowerCase())) {
+                System.out.println(temp.get(i).getContent());
+                flag = false;
+            }
+        }
+        if (flag) {
+            System.out.println("Can't find this template!");
+        }
+    }
+
+    public void update(String Subject, String Content, String language, ArrayList<Template> temp) {
+        for (int i = 0; i < temp.size(); i++) {
+            if ((temp.get(i).getSubject().toLowerCase()).equals(Subject.toLowerCase())) {
                 temp.get(i).setContent(Content);
-               // temp.get(i).setPlaceholders(place);
                 break;
             }
         }
     }
 
     public void delete(String Subject, ArrayList<Template> temp) {
+        boolean flag = true;
         for (int i = 0; i < temp.size(); i++) {
-            if (temp.get(i).getSubject().equals(Subject)) {
+            if ((temp.get(i).getSubject().toLowerCase()).equals(Subject.toLowerCase())) {
                 temp.remove(temp.get(i));
-                break;
+                flag = false;
             }
         }
-        System.out.println("Can't find this template!");
+        if (flag) {
+            System.out.println("Can't find this template!");
+        }
 
     }
 }
