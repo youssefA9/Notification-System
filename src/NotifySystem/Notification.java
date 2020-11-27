@@ -46,9 +46,8 @@ public class Notification {
     }
 
     public void ShowNotify() {
-        System.out.println("Subject is: " + this.subject);
-        System.out.println("Language is: " + this.language);
-        System.out.println("Content is: " + this.content);
+        System.out.println(this.subject);
+        System.out.println(this.content);
     }
 
 }
