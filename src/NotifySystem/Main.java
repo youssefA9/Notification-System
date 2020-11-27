@@ -21,6 +21,7 @@ public class Main {
         String subject, language, content;
         int switchh = 0;
         while (switchh != 6) {
+            Content.delete(0, Content.length());
             System.out.println("1- Read Template \n2- Create Template \n3- Update Template \n4- Delete Template \n5- Create Notification \n6-Exit");
             switchh = input.nextInt();
 
@@ -39,9 +40,10 @@ public class Main {
                     if (manager.CheckSubject(subject, templist.getTemplates())) {
 
                         System.out.println("Enter Language:");
-                        language = cases.next();
+                        language = cases.nextLine();
                         System.out.println("Enter Content of The new Template: \n  (Note: Write (#) if you want to put a placeholder)");
                         System.out.println("Enter (.) in a line when you finish writing the content");
+                        line = "";
                         while (ContentInput.hasNextLine()) {
                             line = ContentInput.nextLine();
                             if (line.equals("."))
@@ -53,19 +55,20 @@ public class Main {
                         Content.trimToSize();
                         newtemp = manager.create(subject, content, language);
                         manager.add(newtemp, templist.getTemplates());
+                        templist.updateList();
                     } else {
                         System.out.println("This Subject is already taken!");
                     }
-                    templist.updateList();
                     break;
                 case 3:
                     System.out.println("Enter Subject of Template");
                     subject = cases.nextLine();
                     if (!manager.CheckSubject(subject, templist.getTemplates())) {
                         System.out.println("Enter new Language : ");
-                        language = cases.next();
+                        language = cases.nextLine();
                         System.out.println("Enter Content of The new Template: \n  (Note: Write (#) if you want to put a placeholder)");
                         System.out.println("Enter (.) in a line when you finish writing the content");
+                        line = "";
                         while (ContentInput.hasNextLine()) {
                             line = ContentInput.nextLine();
                             if (line.equals("."))
@@ -86,10 +89,10 @@ public class Main {
                     subject = cases.nextLine();
                     if (!manager.CheckSubject(subject, templist.getTemplates())) {
                         manager.delete(subject, templist.getTemplates());
+                        templist.updateList();
                     } else {
                         System.out.println("There is no Template with this subject!");
                     }
-                    templist.updateList();
                     break;
                 case 5:
                     System.out.println("To create a notification, you must select a template");

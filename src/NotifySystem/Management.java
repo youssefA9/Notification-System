@@ -8,7 +8,13 @@ public class Management {
         template.setSubject(Subject);
         template.setContent(Content);
         template.setLanguage(language);
-        // template.setPlaceholders(Placeholders);
+        int placeHolder_Counter = 0;
+        for (int i = 0; i < template.getContent().length(); i++) {
+            if (template.getContent().charAt(i) == '#') {
+                placeHolder_Counter++;
+            }
+        }
+        template.setNumOfPlaceholder(placeHolder_Counter);
         return template;
     }
 
@@ -30,6 +36,8 @@ public class Management {
         for (int i = 0; i < temp.size(); i++) {
             if ((temp.get(i).getSubject().toLowerCase()).equals(subject.toLowerCase())) {
                 System.out.println(temp.get(i).getContent());
+                System.out.println(temp.get(i).getLanguage());
+                System.out.println(temp.get(i).getNumOfPlaceholder());
                 flag = false;
             }
         }
@@ -39,10 +47,17 @@ public class Management {
     }
 
     public void update(String Subject, String Content, String language, ArrayList<Template> temp) {
+        int placeHolder_Counter = 0;
         for (int i = 0; i < temp.size(); i++) {
             if ((temp.get(i).getSubject().toLowerCase()).equals(Subject.toLowerCase())) {
+                temp.get(i).setLanguage(language);
                 temp.get(i).setContent(Content);
-                break;
+                for (int j = 0; j < Content.length(); j++) {
+                    if (Content.charAt(j) == '#') {
+                        placeHolder_Counter++;
+                    }
+                }
+                temp.get(i).setNumOfPlaceholder(placeHolder_Counter);
             }
         }
     }
@@ -58,6 +73,5 @@ public class Management {
         if (flag) {
             System.out.println("Can't find this template!");
         }
-
     }
 }

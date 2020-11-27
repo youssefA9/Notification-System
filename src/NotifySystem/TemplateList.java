@@ -56,11 +56,9 @@ public class TemplateList {
                     temp = "";
                     templateIndex++;
                 }
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
         }
     }
 
@@ -81,7 +79,7 @@ public class TemplateList {
                 file.write(templates.get(i).getSubject() + "\n");
                 file.write(templates.get(i).getLanguage() + "\n");
                 file.write(templates.get(i).getContent() + "\n");
-                file.write("‽");
+                file.write("‽" + "\n");
             }
             file.close();
         } catch (IOException e) {
