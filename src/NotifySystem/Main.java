@@ -103,17 +103,16 @@ public class Main {
                     Notification notify = new Notification();
                     ArrayList<String> placeHolder = new ArrayList<>();
                     if (!manager.CheckSubject(subject, templist.getTemplates())) {
+                        System.out.println(subject);
                         for (int i = 0; i < templist.getTemplates().size(); i++) {
-                            if (templist.getTemplates().get(i).getSubject().equals(subject)) {
-
+                            if (templist.getTemplates().get(i).getSubject().equalsIgnoreCase(subject)) {
                                 temp = templist.getTemplates().get(i);
                             }
-
                         }
                         String holder = null;
                         Scanner newHolder = new Scanner(System.in);
                         for (int z = 0; z < temp.getNumOfPlaceholder(); z++) {
-                            System.out.println("Enter placeholder" + (z + 1));
+                            System.out.println("Enter placeholder" + " " + (z + 1));
                             holder = newHolder.nextLine();
                             placeHolder.add(holder);
 

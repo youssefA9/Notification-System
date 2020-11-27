@@ -41,11 +41,14 @@ public class Notification {
                 z++;
             }
         }
+        this.content = c;
+
     }
 
     public void ShowNotify() {
         System.out.println("Subject is: " + this.subject);
-
+        System.out.println("Language is: " + this.language);
+        System.out.println("Content is: " + this.content);
     }
 
 }
