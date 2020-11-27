@@ -35,9 +35,9 @@ public class Management {
         boolean flag = true;
         for (int i = 0; i < temp.size(); i++) {
             if ((temp.get(i).getSubject().toLowerCase()).equals(subject.toLowerCase())) {
-                System.out.println(temp.get(i).getContent());
+                System.out.println(temp.get(i).getSubject());
                 System.out.println(temp.get(i).getLanguage());
-                System.out.println(temp.get(i).getNumOfPlaceholder());
+                System.out.println(temp.get(i).getContent());
                 flag = false;
             }
         }
