@@ -17,6 +17,7 @@ public class TemplateList {
                 Scanner sc = new Scanner(file);
                 int counter = 0;
                 int templateIndex = 0;
+                int placeHolder_Counter = 0;
                 String temp = "";
                 String temp1;
 
@@ -45,6 +46,13 @@ public class TemplateList {
                             counter++;
                         }
                     }
+                    for (int i = 0; i < templates.get(templateIndex).getContent().length(); i++) {
+                        if (templates.get(templateIndex).getContent().charAt(i) == '#') {
+                            placeHolder_Counter++;
+                        }
+                    }
+                    templates.get(templateIndex).setNumOfPlaceholder(placeHolder_Counter);
+                    placeHolder_Counter = 0;
                     temp = "";
                     templateIndex++;
                 }

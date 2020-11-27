@@ -56,6 +56,7 @@ public class Main {
                     } else {
                         System.out.println("This Subject is already taken!");
                     }
+                    templist.updateList();
                     break;
                 case 3:
                     System.out.println("Enter Subject of Template");
@@ -78,6 +79,7 @@ public class Main {
                     } else {
                         System.out.println("There is no Template with this subject!");
                     }
+                    templist.updateList();
                     break;
                 case 4:
                     System.out.println("Enter Subject of The new Template");
@@ -87,6 +89,7 @@ public class Main {
                     } else {
                         System.out.println("There is no Template with this subject!");
                     }
+                    templist.updateList();
                     break;
                 case 5:
                     System.out.println("To create a notification, you must select a template");
