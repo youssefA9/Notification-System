@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Notification {
     TemplateList t;
-    String subject, language, content;
+    String subject, language, content = null;
     ArrayList<String> Placeholders = new ArrayList<>();
     Channel c;
 
@@ -31,22 +31,17 @@ public class Notification {
         this.subject = temp.getSubject();
         this.language = temp.getLanguage();
         int z = 0;
-        for (int i = 0; i < temp.getContent().length(); i++) {
+        String c = temp.getContent();
+        for (int i = 0; i < c.length(); i++) {
 
-            if (temp.getContent().charAt(i) == '#') {
-                //  this.content.charAt(i)=Placeholders.get(z);
+            if (c.charAt(i) == '#') {
+                String s = c.substring(0, i);
+                c = c.substring(i + 1, c.length());
+                c = s + Placeholders.get(z) + c;
                 z++;
-
-            } else {
-                //   this.content.charAt(i)=temp.getContent().charAt(i);
-
             }
-
         }
-
-
     }
-
 
     public void ShowNotify() {
         System.out.println("Subject is: " + this.subject);

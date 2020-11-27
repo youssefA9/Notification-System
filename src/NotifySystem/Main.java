@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.Buffer;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
         Management manager = new Management();
         TemplateList templist = new TemplateList();
         Template newtemp = new Template();
+        Template temp = new Template();
         System.out.println("========= NOTIFICATION SYSTEM ============");
         Scanner input = new Scanner(System.in);
         Scanner ContentInput = new Scanner(System.in);
@@ -96,9 +98,33 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("To create a notification, you must select a template");
-                    //can show list of templates <subjects> then he choose subject and put the placeholders ,construct and show.
-                    //or he can enter template subject, if found , get number of placeholders, enter placeholder..
-                    //then construct notification then show it
+                    System.out.println("Enter Subject of Template");
+                    subject = cases.nextLine();
+                    Notification notify = new Notification();
+                    ArrayList<String> placeHolder = new ArrayList<>();
+                    if (!manager.CheckSubject(subject, templist.getTemplates())) {
+                        for (int i = 0; i < templist.getTemplates().size(); i++) {
+                            if (templist.getTemplates().get(i).getSubject().equals(subject)) {
+
+                                temp = templist.getTemplates().get(i);
+                            }
+
+                        }
+                        String holder = null;
+                        Scanner newHolder = new Scanner(System.in);
+                        for (int z = 0; z < temp.getNumOfPlaceholder(); z++) {
+                            System.out.println("Enter placeholder" + (z + 1));
+                            holder = newHolder.nextLine();
+                            placeHolder.add(holder);
+
+                        }
+                        notify.setPlaceholders(placeHolder);
+                        notify.ConstructNotification(temp);
+                        notify.ShowNotify();
+                    } else {
+                        System.out.println("There is no Template with this subject!");
+                    }
+                    break;
                 case 6:
                     break;
                 default:
