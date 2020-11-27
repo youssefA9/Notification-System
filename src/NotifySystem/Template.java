@@ -7,6 +7,11 @@ public class Template {
     private String Subject;
     private String Content;
     private String Language;
+    private int NumOfPlaceholder;
+
+    public void setNumOfPlaceholder(int n) {
+        this.NumOfPlaceholder = n;
+    }
 
     public void setSubject(String s) {
         this.Subject = s;
@@ -18,6 +23,10 @@ public class Template {
 
     public void setLanguage(String l) {
         this.Language = l;
+    }
+
+    public int getNumOfPlaceholder() {
+        return NumOfPlaceholder;
     }
 
     public String getContent() {

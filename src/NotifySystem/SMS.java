@@ -6,7 +6,7 @@ public class SMS implements Channel {
 
     @Override
     public void setMethod(String method) {
-        this.phone=method;
+        this.phone = method;
 
     }
 }
